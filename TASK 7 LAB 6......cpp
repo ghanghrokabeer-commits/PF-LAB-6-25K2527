@@ -1,25 +1,32 @@
 #include <stdio.h>
 
 int main() {
-    int num, original, remainder, result = 0;
+    char str[200];
+    int i, j, end;
 
-    printf("Enter a number: ");
-    scanf("%d", &num);
+    printf("Enter a sentence: ");
+    gets(str);
 
-    original = num;
+    for (end = 0; str[end] != '\0'; end++);
 
-    while (num != 0) {
-        remainder = num % 10;
-        result += remainder * remainder * remainder; 
-        num /= 10;
-    }
+    printf("Reversed sentence: ");
 
-    if (result == original) {
-        printf("%d is an Armstrong number.\n", original);
-    } else {
-        printf("%d is not an Armstrong number.\n", original);
+    i = end - 1;
+    while (i >= 0) {
+        while (i >= 0 && str[i] == ' ')
+            i--;
+        if (i < 0)
+            break;
+        j = i;
+        while (i >= 0 && str[i] != ' ')
+            i--;
+        int k = i + 1;
+        while (k <= j) {
+            printf("%c", str[k]);
+            k++;
+        }
+        printf(" ");
     }
 
     return 0;
 }
-
